@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace POSPrinterPdfGenerator
+namespace IDCT.Html2Pdf
 {
     public static class Extensions
     {

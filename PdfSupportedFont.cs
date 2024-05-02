@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace POSPrinterPdfGenerator
+namespace IDCT.Html2Pdf
 {    
     /// <summary>
     /// Enum of supported fonts in the PDF.

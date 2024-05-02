@@ -9,8 +9,9 @@ using PdfSharp;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Text;
+using POSPrinterPdfGenerator;
 
-namespace POSPrinterPdfGenerator
+namespace IDCT.Html2Pdf
 {
     /// <summary>
     /// Allows generation of long and narrow PDFs out of HTML 4 for printing of receipts on POS printers.
@@ -156,7 +157,7 @@ namespace POSPrinterPdfGenerator
         /// <param name="html">HTML markup. Supported HTML tags supported by Htmldoc: https://www.msweet.org/htmldoc/htmldoc.html</param>
         /// <param name="outputFilePath">Destination, target PDF file.</param>
         /// <param name="htmldocOptions">Options for the Htmldoc parser.</param>
-        public void HtmlToReceipt(string html, string outputFilePath, HtmldocOptions? htmldocOptions = null)
+        public Box HtmlToReceipt(string html, string outputFilePath, HtmldocOptions? htmldocOptions = null)
         {
             htmldocOptions ??= new HtmldocOptions();
 
@@ -165,9 +166,11 @@ namespace POSPrinterPdfGenerator
             HtmlToPdf(html, tempOutputFile, htmldocOptions);
             var tempCombinedFile = Path.GetTempFileName() + ".pdf";
             CombineLongPdf(tempOutputFile, tempCombinedFile);
-            TrimPdf(tempCombinedFile, outputFilePath, htmldocOptions.BottomMargin);
+            var size = TrimPdf(tempCombinedFile, outputFilePath, htmldocOptions.BottomMargin);
             File.Delete(tempOutputFile);
             File.Delete(tempCombinedFile);
+
+            return size;
         }
 
         /// <summary>
@@ -267,7 +270,7 @@ namespace POSPrinterPdfGenerator
         /// <param name="inputFilePath">Path to the input file.</param>
         /// <param name="outputFilePath">Path to the output file.</param>
         /// <param name="bottomMargin">Bottom margin in pixels, defaults to 0.</param>
-        public static void TrimPdf(string inputFilePath, string outputFilePath, int bottomMargin = 0)
+        public static Box TrimPdf(string inputFilePath, string outputFilePath, int bottomMargin = 0)
         {
             PdfDocument pdfDocument = PdfReader.Open(inputFilePath, PdfDocumentOpenMode.Import);
             DocLib DocNet = DocLib.Instance;
@@ -344,6 +347,8 @@ namespace POSPrinterPdfGenerator
 
             outputDocument.Save(outputFilePath);
             outputDocument.Close();
+
+            return new Box(page.Width, page.Height);
         }
     }
 }

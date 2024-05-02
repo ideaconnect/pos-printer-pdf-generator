@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POSPrinterPdfGenerator
+namespace IDCT.Html2Pdf
 {
     internal class DependencyNotFoundException(string message) : Exception(message)
     {

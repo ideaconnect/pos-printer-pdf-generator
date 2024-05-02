@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POSPrinterPdfGenerator
+namespace IDCT.Html2Pdf
 {
     internal class RsaSignatureVerifier : IDisposable
     {

@@ -1,4 +1,4 @@
-﻿namespace POSPrinterPdfGenerator
+﻿namespace IDCT.Html2Pdf
 {
     /// <summary>
     /// Options passed to the Htmldoc Parser.
