@@ -9,14 +9,16 @@ using PdfSharp;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Text;
-using POSPrinterPdfGenerator;
+using IDCT.Exception;
+using IDCT.Type;
+using IDCT.Security;
 
-namespace IDCT.Html2Pdf
+namespace IDCT
 {
     /// <summary>
     /// Allows generation of long and narrow PDFs out of HTML 4 for printing of receipts on POS printers.
     /// </summary>
-    public class POSPrinterPdfGenerator
+    public class PosPdfAssistant
     {
         /// <summary>
         /// Path to htmldoc (or htmldoc.exe on Windows).
@@ -61,7 +63,7 @@ namespace IDCT.Html2Pdf
         /// <param name="htmldocPath">Full path to htmldoc executable.</param>
         /// <exception cref="DependencyNotFoundException">When htmldoc was not found or is in wrong version.</exception>
         /// <exception cref="InvalidLicenseException">If license is provided but is invalid.</exception>
-        public POSPrinterPdfGenerator(string? htmldocPath = null)
+        public PosPdfAssistant(string? htmldocPath = null)
         {
             string? htmldocExecutablePath = null;
             //try to locate htmldocPath

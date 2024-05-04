@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace IDCT.Html2Pdf
+namespace IDCT.Type
 {    
     /// <summary>
     /// Enum of supported fonts in the PDF.

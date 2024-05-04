@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>IDCT</RootNamespace>
+    <AssemblyName>IDCT.PosPdfAssistant</AssemblyName>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>$(AssemblyName).PosPdfAssistant</PackageId>
+    <Title>POS Printer PDF Assistant</Title>
+    <Authors>idct</Authors>
+    <Company>IDCT Bartosz Pachołek</Company>
+    <Product>POS Printer PDF Assistant</Product>
+    <Copyright>IDCT Bartosz Pachołek</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>Toolchain which simplfies the process of PDFs generation out of HTML which can be used with POS receipt printers.
+Allows conversion of HTML into long and narrow PDF files which can be passed to CUPS-compatible receipts printer.</Description>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+	<Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<None Include="LICENSE" Pack="true" PackagePath="" />
+    <None Include="README.md" Pack="true" PackagePath="" />	  
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Docnet.Core" Version="2.6.0" />
+    <PackageReference Include="PDFsharp" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>

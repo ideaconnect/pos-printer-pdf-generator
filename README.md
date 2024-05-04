@@ -44,12 +44,13 @@ Returns `Box` which provides width and height in points, inches and milimeters, 
 
 # Sample usage
 
-Main namespace is `IODCT.Html2Pdf`, so for example to generate a simple receipt:
+Main namespace is `IDCT`, so for example to generate a simple receipt:
 
 ```csharp
-using IDCT.Html2Pdf;
+using IDCT;
+using IDCT.Type;
 
-POSPrinterPdfGenerator generator = new();
+PosPdfAssistant pdfAssistant = new();
 
 string html = "" +
     "<html>" +
@@ -68,7 +69,7 @@ string html = "" +
     "</body>" +
     "</html>";
 
-var size = generator.HtmlToReceipt(html, "out.pdf", new HtmldocOptions() { Gray = true, PdfSupportedFont = PdfSupportedFont.Monospace });
+var size = pdfAssistant.HtmlToReceipt(html, "out.pdf", new HtmldocOptions() { Gray = true, PdfSupportedFont = PdfSupportedFont.Monospace });
 
 Console.WriteLine(String.Format("Size in points: {0}x{1}pt", size.Width.Point, size.Height.Point));
 Console.WriteLine(String.Format("Size in inches: {0}x{1}cm", size.Width.Inch, size.Height.Inch));
@@ -78,7 +79,7 @@ Console.WriteLine(String.Format("Size in milimeters: {0}x{1}mm", size.Width.Mill
 
 Will result in a PDF looking like this:
 
-![Sample PDF screenshot](sample-output.png "Sample PDF's screenshot")
+![Sample PDF screenshot](https://i.imgur.com/oLJ6zlk.png "Sample PDF's screenshot")
 
 Sample execution results also in output to console:
 
@@ -93,13 +94,13 @@ With some printers it may be require to provide exact size, for example with **C
 lpr -H 172.20.0.3 -o PrintDensity=7Density+37 -o PageSize=Custom.136x237pt -o orientation-requested=3 -P printer out.pdf
 ```
 
-![Sample PDF print](printed.jpg "Sample print")
+![Sample PDF print](https://i.imgur.com/aW63AsV.jpg "Sample print")
 
 # Installation and requirements
 
 Follow `nuget` instructions, for example to install with .NET Cli:
 ```bash
-dotnet add package IDCT.PosPrinterPdfGenerator
+dotnet add package IDCT.PosPdfAssistant
 ```
 
 Library supports Windows, OSX and Linux (tested on Debian and WSL).
@@ -108,7 +109,7 @@ Library supports Windows, OSX and Linux (tested on Debian and WSL).
 
 * Available in the system, for example by installing it using Windows installer, or by `apt get`. Ensure that it is present in PATH enviromental variable.
 * By placing `htmldoc` in the same folder as your application which includes the library.
-* By providing path to `htmldoc` in the constructor of the instance: `public POSPrinterPdfGenerator(string? htmldocPath = null)`
+* By providing path to `htmldoc` in the constructor of the instance: `public PosPdfAssistant(string? htmldocPath = null)`
 
 .NET 6 or newer is required.
 
@@ -122,9 +123,7 @@ This application is **NOT FREE**, license needs to be obtained for personal and 
 
 # Open Source Promise
 
-Library will become open-source and available on Github in January 2026.
-
-It is possible to obtain source code with the enterprise license.
+Library will become open-source and available on Github in January 2026. This promise is not part of the license.
 
 # Support and troubleshooting
 

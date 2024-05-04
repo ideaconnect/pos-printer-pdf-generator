@@ -1,4 +1,4 @@
-﻿namespace IDCT.Html2Pdf
+﻿namespace IDCT.Type
 {
     /// <summary>
     /// Options passed to the Htmldoc Parser.
