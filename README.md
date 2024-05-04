@@ -56,7 +56,7 @@ string html = "" +
     "<html>" +
     "<body>" +
     "<center>" + DateTime.Now.ToLocalTime().ToString() + "</center>" +
-    "<p><img src='C:\\Users\\ideac\\source\\repos\\ParagonGen\\bin\\Debug\\net8.0\\logo.png' width='100%'></p>" +
+    "<p><img src='C:\\path\\to\\file\\logo.png' width='100%'></p>" +
     "<table>" +
     "<tr><td width='100%'><b>Koku-Kola</b></td><td>3.14</td>" +
     "<tr><td width='100%'><b>Pefsi</b></td><td>6.14</td>" +
