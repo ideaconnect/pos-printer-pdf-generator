@@ -11,7 +11,6 @@ using System.Text.RegularExpressions;
 using System.Text;
 using IDCT.Exception;
 using IDCT.Type;
-using IDCT.Security;
 
 namespace IDCT
 {
@@ -24,11 +23,6 @@ namespace IDCT
         /// Path to htmldoc (or htmldoc.exe on Windows).
         /// </summary>
         private readonly string HtmldocPath;
-
-        /// <summary>
-        /// Indicates that unlicensed library is running. Changed to true if proper license is loaded.
-        /// </summary>
-        private readonly bool Unlicensed;
 
         /// <summary>
         /// Tries to find an executable in paths indicated by PATH env variable.
@@ -118,39 +112,6 @@ namespace IDCT
             }
 
             HtmldocPath = htmldocExecutablePath;
-            Console.WriteLine(Directory.GetCurrentDirectory());
-            if (File.Exists("idct.posprinterpdfgenerator.license.key") && File.Exists("idct.posprinterpdfgenerator.license.sign")) {
-                string license = "";
-
-                using (StreamReader reader = new("idct.posprinterpdfgenerator.license.key"))
-                {
-                    license = reader.ReadToEnd().Trim();
-                }
-
-                string[] parts = license.Split(';');
-                string email = parts[0];
-                string key = parts[1];
-
-                string hashingKey = "77d65cea919cdd2e7d00510251a41bbffc3c690a";
-
-                var hash = Convert.ToHexString(SHA512.HashData(Encoding.UTF8.GetBytes(email + ";;" + hashingKey + ";;" + email))).ToUpper();
-
-                if (hash != key)
-                {
-                    throw new InvalidLicenseException("Provided license key file is invalid. Please contact support@idct.tech or obtain a valid license file on https://idct.tech.");
-                }
-
-                RsaSignatureVerifier verify = new();
-                if (verify.Verify("idct.posprinterpdfgenerator.license.key", "idct.posprinterpdfgenerator.license.sign") == false)
-                {
-                    throw new InvalidLicenseException("Provided license key signature is invalid. Please contact support@idct.tech or obtain a valid license file on https://idct.tech.");
-                }
-
-                Unlicensed = false;
-            } else
-            {
-                Unlicensed = true;
-            }
         }
 
         /// <summary>
@@ -194,11 +155,6 @@ namespace IDCT
             if (!match.Success)
             {
                 throw new InvalidPdfParametersException("<body> tag not present in the input html!");
-            }
-
-            if (Unlicensed)
-            {
-                html = html.Replace(match.Value, match.Value + "<center><b>UNLICENSED</b><br>GO TO: <b>https://idct.tech</b><br><b>To get a license!</b><br></center><hr>");
             }
 
             //tries to write the html contents to file

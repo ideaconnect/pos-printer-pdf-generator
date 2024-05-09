@@ -119,12 +119,16 @@ Depends also on open-source projects:
 
 # License
 
-This application is **NOT FREE**, license needs to be obtained for personal and commercial use. License can be obtained on https://idct.tech. Until license is obtained a prefix saying that unlicensed library was used will be added in the beginning of converted files.
-
-# Open Source Promise
-
-Library will become open-source and available on Github in January 2026. This promise is not part of the license.
+This application is **FREE**, under MIT license which means that by default without any support. At the time of writing PDFsharp and Docnet.Core are also using MIT.
 
 # Support and troubleshooting
 
-Support is provided via e-mail **support@idct.tech**.
+Support is provided via e-mail **support@idct.tech**. Issues or code updates reported via GitHub are more than welcome!
+
+Link to GitHub: https://github.com/ideaconnect/pos-printer-pdf-generator
+
+# TODO 
+
+Version 2.x is meant to be fully tested using Unit and Functional Tests.
+
+Version 3.x will attempt to get rid of `htmldoc` dependency in favor or parsing HTML internally.

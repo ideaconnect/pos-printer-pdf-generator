@@ -7,7 +7,7 @@
     <RootNamespace>IDCT</RootNamespace>
     <AssemblyName>IDCT.PosPdfAssistant</AssemblyName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>$(AssemblyName).PosPdfAssistant</PackageId>
+    <PackageId>$(AssemblyName)</PackageId>
     <Title>POS Printer PDF Assistant</Title>
     <Authors>idct</Authors>
     <Company>IDCT Bartosz Pachołek</Company>
@@ -19,7 +19,7 @@
 Allows conversion of HTML into long and narrow PDF files which can be passed to CUPS-compatible receipts printer.</Description>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
-	<Version>1.0.0</Version>
+	<Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
